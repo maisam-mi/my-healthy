@@ -1,5 +1,12 @@
 <template>
-  <q-drawer show-if-above side="left" class="bg-dark text-secondary" bordered :width="250" :breakpoint="500">
+  <q-drawer
+    show-if-above
+    side="left"
+    class="bg-dark text-secondary"
+    bordered
+    :width="250"
+    :breakpoint="500"
+  >
     <q-scroll-area class="fit">
       <q-list padding class="menu-list">
         <q-item clickable v-ripple to="/">
@@ -17,4 +24,12 @@
     </q-scroll-area>
   </q-drawer>
 </template>
-<script setup></script>
+<script setup>
+import { useQuasar } from "quasar";
+const $q = useQuasar();
+</script>
+<style lang="scss">
+.menu-list .q-item {
+  color: $secondary;
+}
+</style>

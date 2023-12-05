@@ -10,10 +10,10 @@
       />
 
       <q-toolbar-title>
-        <q-avatar>
-          <img src="/images/logo/logo.svg" />
-        </q-avatar>
-        <span class="q-ml-sm"> my healthy </span>
+        <div class="row items-center">
+          <img src="/images/logo/logo.svg" style="width: 38px" />
+          <span class="q-ml-sm"> my healthy </span>
+        </div>
       </q-toolbar-title>
     </q-toolbar>
   </q-header>
