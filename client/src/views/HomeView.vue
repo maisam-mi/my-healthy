@@ -7,7 +7,7 @@
     </div>
     <q-card bordered grid class="my-card bg-orange">
       <q-card-section>
-        <div class="text-h6">342 kalories</div>
+        <div class="text-h6">10000 kalories</div>
       </q-card-section>
 
       <q-card-section class="q-pt-none">
