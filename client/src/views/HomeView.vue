@@ -1,13 +1,13 @@
 <template>
-  <div class="justify-center">
+  <div class="justify-center robotoBold">
     <div class="text-center">
       <div class="q-pa-md q-gutter-sm">
-        <q-btn color="blue" class="roboto" label="Start" />
+        <q-btn color="blue" class="robotoBold" label="Start" />
       </div>
     </div>
     <q-card bordered grid class="my-card bg-orange">
       <q-card-section>
-        <div class="text-h6">120000 kalories</div>
+        <div class="text-h6">120000 Kalorien</div>
       </q-card-section>
 
       <q-card-section class="q-pt-none">
@@ -21,27 +21,22 @@
     </q-card>
     <div class="q-pa-md">
       <q-table
-        
-        
         grid
         card-class="bg-orange text-dark"
-        style="font-family: 'RobotoMedium';"
+        style="font-family: 'RobotoMedium'"
         title="Letzte Aufnahmen"
         :rows="data"
-        :columns="columns"
         row-key="name"
-        :filter="filter"
         hide-header
       >
-      
       </q-table>
     </div>
   </div>
 </template>
 
 <script setup>
-import TitleComp from "@/components/TitleComp.vue";
-import useDefaultStore from "@/stores/defaultStore.js";
+import TitleComp from '@/components/TitleComp.vue';
+import useDefaultStore from '@/stores/defaultStore.js';
 
 const store = useDefaultStore();
 
@@ -50,31 +45,31 @@ const data = [
     calories: 456,
     distance: 2345,
     time: 30,
-    date: "11.10.2023",
+    date: '11.10.2023',
   },
   {
     calories: 367,
     distance: 1987,
     time: 23,
-    date: "10.10.2023",
+    date: '10.10.2023',
   },
   {
     calories: 134,
     distance: 457,
     time: 10,
-    date: "09.10.2023",
+    date: '09.10.2023',
   },
   {
     calories: 789,
     distance: 3450,
     time: 56,
-    date: "08.10.2023",
+    date: '08.10.2023',
   },
 ];
 </script>
 
 <style lang="scss" scoped>
-.roboto {
-  font-family: "RobotoBold";
+.robotoBold {
+  font-family: 'RobotoBold';
 }
 </style>
