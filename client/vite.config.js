@@ -17,7 +17,6 @@ export default defineConfig({
     quasar({
       sassVariables: 'src/quasar-variables.sass',
     }),
-    vue(),
     VitePWA({
       manifest,
       includeAssets: ['**/*.{js,css,html,jpg,ico,png,ttf,woff2}'],
