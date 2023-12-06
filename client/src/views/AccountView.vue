@@ -1,8 +1,8 @@
 <template>
   <div class="column justify-center items-center robotoBold">
-  <div class="q-mb-md">
-    <q-btn color="blue" class="robotoBold" label="bearbeiten" />
-  </div>
+    <div class="q-mb-md">
+      <q-btn color="blue" class="robotoBold" label="bearbeiten" />
+    </div>
     <div class="text-center">
       <q-avatar size="250px" class="q-mb-xl">
         <q-img src="/images/pexels-pixabay-220453.jpg" class="round" />
