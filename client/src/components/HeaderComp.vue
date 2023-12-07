@@ -1,5 +1,5 @@
 <template>
-  <q-header class="bg-primary text-white" height-hint="98">
+  <q-header class="bg-primary text-white robotoBold" height-hint="98">
     <q-toolbar>
       <q-btn
         dense
@@ -31,5 +31,9 @@ defineEmits(["toggleLeftDrawer"]);
 .rotate-on-hover:hover {
   transform: rotate(-360deg);
   transition: transform 0.8s ease-in-out;
+}
+
+.robotoBold {
+  font-family: 'RobotoBold';
 }
 </style>

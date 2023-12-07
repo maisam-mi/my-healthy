@@ -2,7 +2,7 @@
   <q-drawer
     show-if-above
     side="left"
-    class="bg-dark text-secondary"
+    class="bg-dark text-secondary robotoBold"
     bordered
     :width="250"
     :breakpoint="500"
@@ -31,5 +31,9 @@ const $q = useQuasar();
 <style lang="scss">
 .menu-list .q-item {
   color: $secondary;
+}
+
+.robotoBold {
+  font-family: 'RobotoBold';
 }
 </style>
