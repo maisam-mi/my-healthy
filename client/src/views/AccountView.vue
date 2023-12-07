@@ -22,7 +22,7 @@
       <q-card class="my-card card text-center col-5">
         <q-card-section>
           <div>
-            <q-icon name="img:images/icons/birthday-cake.webp" class="image q-pb-md" />
+            <q-icon name="img:images/icons/weight.webp" class="image q-pb-md" />
           </div>
           <div class="text-h6">{{ account.weight }} kg</div>
         </q-card-section>
@@ -30,7 +30,7 @@
       <q-card class="my-card card text-center col-5">
         <q-card-section>
           <div>
-            <q-icon name="img:images/icons/birthday-cake.webp" class="image q-pb-md" />
+            <q-icon name="img:images/icons/height.webp" class="image q-pb-md" />
           </div>
           <div class="text-h6">{{ account.height }} m</div>
         </q-card-section>
@@ -38,7 +38,7 @@
       <q-card class="my-card card text-center col-5">
         <q-card-section>
           <div>
-            <q-icon name="img:images/icons/birthday-cake.webp" class="image q-pb-md" />
+            <q-icon name="img:images/icons/distance.webp" class="image q-pb-md" />
           </div>
           <div class="text-h6">{{ account.distance }} km</div>
         </q-card-section>
@@ -46,7 +46,7 @@
       <q-card class="my-card card text-center col-5">
         <q-card-section>
           <div>
-            <q-icon name="img:images/icons/birthday-cake.webp" class="image q-pb-md" />
+            <q-icon name="img:images/icons/clock.webp" class="image q-pb-md" />
           </div>
           <div class="text-h6">{{ account.time }} h</div>
         </q-card-section>
@@ -54,7 +54,7 @@
       <q-card class="my-card card text-center col-5">
         <q-card-section>
           <div>
-            <q-icon name="img:images/icons/birthday-cake.webp" class="image q-pb-md" />
+            <q-icon name="img:images/icons/calories.webp" class="image q-pb-md" />
           </div>
           <div class="text-h6">{{ account.calories }} kcal</div>
         </q-card-section>
