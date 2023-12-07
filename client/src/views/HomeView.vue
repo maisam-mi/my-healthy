@@ -2,7 +2,7 @@
   <div class="justify-center robotoBold">
     <div class="text-center">
       <div class="q-pa-md q-gutter-sm">
-        <q-btn color="blue" class="robotoBold" label="Start" />
+        <q-btn color="blue" class="robotoBold text-h6 q-pa-lg" label="Start" />
       </div>
     </div>
     <q-card bordered grid class="my-card bg-orange">
