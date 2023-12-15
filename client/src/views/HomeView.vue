@@ -5,7 +5,7 @@
         <q-btn color="blue" class="robotoBold text-h6 q-pa-lg" label="Start" />
       </div>
     </div>
-    <q-card bordered grid class="my-card bg-orange">
+    <q-card bordered grid class="my-card bg-orange-5">
       <q-card-section>
         <div class="text-h6">120000 Kalorien</div>
       </q-card-section>
@@ -22,7 +22,7 @@
     <div class="q-pa-md">
       <q-table
         grid
-        card-class="bg-orange text-dark"
+        card-class="bg-orange-5 text-dark"
         style="font-family: 'RobotoMedium'"
         title="Letzte Aufnahmen"
         :rows="data"
