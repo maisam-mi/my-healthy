@@ -2,7 +2,7 @@
   <div class="justify-center robotoBold">
     <div class="text-center">
       <div class="q-pa-md q-gutter-sm">
-        <q-btn color="blue" class="robotoBold text-h6 q-pa-lg" label="Start" />
+        <q-btn color="blue" class="robotoBold text-h6 q-pa-lg" label="Start"/>
       </div>
     </div>
     <q-card bordered grid class="my-card bg-orange-5">
@@ -37,6 +37,8 @@
 <script setup>
 import TitleComp from '@/components/TitleComp.vue';
 import useDefaultStore from '@/stores/defaultStore.js';
+import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { getDistance } from 'geolib';
 
 const store = useDefaultStore();
 
@@ -66,6 +68,8 @@ const data = [
     date: '08.10.2023',
   },
 ];
+
+
 </script>
 
 <style lang="scss" scoped>
