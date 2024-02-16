@@ -1,6 +1,6 @@
 import express from 'express';
 import asyncHandler from 'express-async-handler';
-import { query } from '../../boilerplate/db/index.js';
+import { query } from '../../../boilerplate/db/index.js';
 
 const router = express.Router();
 

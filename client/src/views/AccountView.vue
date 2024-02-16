@@ -7,8 +7,8 @@
       <q-avatar size="250px" class="q-mb-xl">
         <q-img src="/images/pexels-pixabay-220453.jpg" class="round" />
       </q-avatar>
-      <p class="text-h4">{{ account.name }}</p>
-      <p class="text-h5 robotoMedium">{{ account.email }}</p>
+      <p class="text-h4">{{ store.person.firstname }} {{ store.person.lastname }}</p>
+      <p class="text-h5 robotoMedium">{{ store.person.email }}</p>
     </div>
     <div class="row q-gutter-md justify-center">
       <q-card class="my-card card text-center col-5">
@@ -16,7 +16,7 @@
           <div>
             <q-icon name="img:images/icons/birthday-cake.webp" class="image q-pb-md" />
           </div>
-          <div class="text-h6">{{ account.age }}</div>
+          <div class="text-h6">{{ store.person.birthdate }}</div>
         </q-card-section>
       </q-card>
       <q-card class="my-card card text-center col-5">
@@ -24,7 +24,7 @@
           <div>
             <q-icon name="img:images/icons/weight.webp" class="image q-pb-md" />
           </div>
-          <div class="text-h6">{{ account.weight }} kg</div>
+          <div class="text-h6">{{ store.person.weight }} kg</div>
         </q-card-section>
       </q-card>
       <q-card class="my-card card text-center col-5">
@@ -32,7 +32,7 @@
           <div>
             <q-icon name="img:images/icons/height.webp" class="image q-pb-md" />
           </div>
-          <div class="text-h6">{{ account.height }} m</div>
+          <div class="text-h6">{{ store.person.height }} m</div>
         </q-card-section>
       </q-card>
       <q-card class="my-card card text-center col-5">
@@ -40,7 +40,7 @@
           <div>
             <q-icon name="img:images/icons/distance.webp" class="image q-pb-md" />
           </div>
-          <div class="text-h6">{{ account.distance }} km</div>
+          <div class="text-h6">{{ store.person.traveldistance }} km</div>
         </q-card-section>
       </q-card>
       <q-card class="my-card card text-center col-5">
@@ -56,7 +56,7 @@
           <div>
             <q-icon name="img:images/icons/calories.webp" class="image q-pb-md" />
           </div>
-          <div class="text-h6">{{ account.calories }} kcal</div>
+          <div class="text-h6">{{ store.person.calories }} kcal</div>
         </q-card-section>
       </q-card>
     </div>
@@ -68,17 +68,11 @@ import TitleComp from '@/components/TitleComp.vue';
 import useDefaultStore from '@/stores/defaultStore.js';
 
 const store = useDefaultStore();
+store.getPerson();
 
 // optional: image property
 const account = {
-  name: 'Maisam Mohammadi',
-  email: 'riomaisam@gmail.com',
-  age: 20, // the date instead of age
-  weight: 73.3,
-  height: 178,
-  distance: 21,
   time: 40,
-  calories: 45,
 };
 </script>
 <style lang="scss" scoped>

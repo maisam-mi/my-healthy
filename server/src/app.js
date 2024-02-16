@@ -4,7 +4,8 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import path from 'path';
 
-import testRoute from './routes/test.js';
+import testRoute from './api/routes/test.js';
+import personRoute from './api/routes/person.route.js';
 
 dotenv.config();
 
@@ -20,6 +21,7 @@ app.use(express.static(path.join(dirname, '/public')));
 app.use(express.json());
 
 app.use('/test', testRoute);
+app.use('/persons', personRoute);
 
 const PORT = process.env.PORT || 5000;
 

@@ -1,15 +1,27 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
+import axios from 'axios';
 
 const useDefaultStore = defineStore('DefaultId', () => {
   const aboutContent = ref('Implementiert von © Maisam Mohammadi, HTL Wien West 2023');
-  const counter = ref(0);
 
-  const increaseCounter = () => {
-    counter.value += 1;
+  const person = ref({
+    firstname: '',
+    lastname: '',
+    email: '',
+    birthdate: '',
+    height: '',
+    weight: '',
+    traveldistance: '',
+    calories: '',
+  });
+
+  const getPerson = async () => {
+    const result = await axios.get('http://localhost:3000/persons/1');
+    person.value = result.data;
   };
 
-  return { aboutContent, counter, increaseCounter };
+  return { aboutContent, person, getPerson };
 });
 
 export default useDefaultStore;
