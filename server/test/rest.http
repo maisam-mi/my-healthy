@@ -5,3 +5,51 @@ GET http://localhost:3000/persons
 
 ###
 GET http://localhost:3000/persons/1
+
+###
+POST http://localhost:3000/persons
+content-type: application/json
+
+{
+    "firstname": "Rana",
+    "lastname": "Idrees",
+    "email": "idrees@gmail.com",
+    "password": "idrees2004!",
+    "birthdate": "2004-03-23",
+    "height": 175,
+    "weight": 80
+}
+
+###
+PATCH http://localhost:3000/persons/idrees@gmail.com
+content-type: application/json
+
+{
+    "firstname": "Rana Syyab",
+    "lastname": "Idrees",
+    "password": "idrees2004!",
+    "birthdate": "2004-03-23",
+    "height": 180,
+    "weight": 82
+}
+
+###
+DELETE http://localhost:3000/persons/idrees@gmail.com
+
+###
+GET http://localhost:3000/records
+
+###
+GET http://localhost:3000/records/1
+
+###
+POST http://localhost:3000/records
+content-type: application/json
+
+{
+    "traveldistance": 6,
+    "runnedtime": "01:00:00",
+    "calories": 5000,
+    "pid": 2,
+    "runneddate": "2004-03-31"
+}

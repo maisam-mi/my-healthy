@@ -2,7 +2,7 @@
   <div class="justify-center robotoBold">
     <div class="text-center">
       <div class="q-pa-md q-gutter-sm">
-        <q-btn color="blue" class="robotoBold text-h6 q-pa-lg" label="Start"/>
+        <q-btn color="blue" class="robotoBold text-h6 q-pa-lg" label="Start" />
       </div>
     </div>
     <q-card bordered grid class="my-card bg-orange-5">
@@ -23,9 +23,10 @@
       <q-table
         grid
         card-class="bg-orange-5 text-dark"
-        style="font-family: 'RobotoMedium'"
+        style="font-family: &quot;RobotoMedium&quot;"
         title="Letzte Aufnahmen"
-        :rows="data"
+        :columns="columns"
+        :rows="store.records"
         row-key="name"
         hide-header
       >
@@ -35,45 +36,48 @@
 </template>
 
 <script setup>
-import TitleComp from '@/components/TitleComp.vue';
-import useDefaultStore from '@/stores/defaultStore.js';
-import { ref, onMounted, onBeforeUnmount } from 'vue';
-import { getDistance } from 'geolib';
+import useDefaultStore from "@/stores/defaultStore.js";
+import { ref, onMounted, onBeforeUnmount } from "vue";
+import { getDistance } from "geolib";
 
 const store = useDefaultStore();
+store.getRecords();
 
-const data = [
+const columns = [
   {
-    calories: 456,
-    distance: 2345,
-    time: 30,
-    date: '11.10.2023',
+    name: "calories",
+    align: "left",
+    label: "Calories",
+    field: "calories",
+    sortable: true,
   },
   {
-    calories: 367,
-    distance: 1987,
-    time: 23,
-    date: '10.10.2023',
+    name: "distance",
+    align: "left",
+    label: "Distance",
+    field: "traveldistance",
+    sortable: true,
   },
   {
-    calories: 134,
-    distance: 457,
-    time: 10,
-    date: '09.10.2023',
+    name: "time",
+    align: "left",
+    label: "Time",
+    field: "runnedtime",
+    sortable: true,
   },
   {
-    calories: 789,
-    distance: 3450,
-    time: 56,
-    date: '08.10.2023',
+    name: "date",
+    align: "left",
+    label: "Date",
+    field: "runneddate",
+    sortable: true,
   },
 ];
-
 
 </script>
 
 <style lang="scss" scoped>
 .robotoBold {
-  font-family: 'RobotoBold';
+  font-family: "RobotoBold";
 }
 </style>
