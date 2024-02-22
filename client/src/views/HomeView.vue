@@ -78,13 +78,6 @@ const startRunning = () => {
   startTime.value = new Date();
 
   navigator.geolocation.getCurrentPosition((location) => {
-    console.log(
-      'Start > latitude:',
-      location.coords.latitude,
-      'longitude:',
-      location.coords.longitude,
-    );
-
     startCoordinates.value = {
       latitude: location.coords.latitude,
       longitude: location.coords.longitude,
@@ -98,13 +91,6 @@ const stopRunning = () => {
   endTime.value = new Date();
 
   navigator.geolocation.getCurrentPosition((location) => {
-    console.log(
-      'Stop > latitude:',
-      location.coords.latitude,
-      'longitude:',
-      location.coords.longitude,
-    );
-
     endCoordinates.value = {
       latitude: location.coords.latitude,
       longitude: location.coords.longitude,
@@ -121,7 +107,6 @@ const stopRunning = () => {
     (getDistance(startCoordinates.value, endCoordinates.value) / 1000).toFixed(2),
   );
 
-  console.log(parseFloat(store.person.weight));
   calculatedCalories.value = parseInt(
     calculatedDistance.value * parseFloat(store.person.weight) * 0.9,
   );
@@ -137,9 +122,6 @@ const stopRunning = () => {
   };
 
   store.addRecord();
-
-  console.log('RunnedDistance: ', calculatedDistance.value);
-  console.log('Calories: ', calculatedCalories.value);
 };
 
 const columns = [
