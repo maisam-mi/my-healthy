@@ -15,11 +15,17 @@ const useDefaultStore = defineStore('DefaultId', () => {
     weight: '',
     traveldistance: '',
     calories: '',
+    time: { hours: 0, minutes: 0, seconds: 0 },
   });
 
   const getPerson = async () => {
     const result = await axios.get('http://localhost:3000/persons/1');
     person.value = result.data;
+  };
+
+  const updatePerson = async () => {
+    await axios.patch(`http://localhost:3000/persons/${person.value.email}`, person.value);
+    getPerson();
   };
   // #endregion
 
@@ -38,7 +44,16 @@ const useDefaultStore = defineStore('DefaultId', () => {
     getRecords();
   };
   // #endregion
-  return { aboutContent, person, getPerson, records, getRecords, currentRecord, addRecord };
+  return {
+    aboutContent,
+    person,
+    getPerson,
+    records,
+    getRecords,
+    currentRecord,
+    addRecord,
+    updatePerson,
+  };
 });
 
 export default useDefaultStore;
