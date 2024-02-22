@@ -32,8 +32,13 @@ const useDefaultStore = defineStore('DefaultId', () => {
     const result = await axios.get('http://localhost:3000/records/1');
     records.value = result.data;
   };
+
+  const addRecord = async () => {
+    await axios.post('http://localhost:3000/records', currentRecord.value);
+    getRecords();
+  };
   // #endregion
-  return { aboutContent, person, getPerson, records, getRecords, currentRecord };
+  return { aboutContent, person, getPerson, records, getRecords, currentRecord, addRecord };
 });
 
 export default useDefaultStore;

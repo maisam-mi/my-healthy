@@ -18,19 +18,19 @@
         />
       </div>
     </div>
-    <div v-if="store.currentRecord == null">Bevore running, please click the start!</div>
+    <div v-if="store.currentRecord == null">start, run, stop</div>
     <q-card v-if="store.currentRecord != null" bordered grid class="my-card bg-orange-5">
       <q-card-section>
         <div class="text-h6">{{ store.currentRecord.calories }} Kalorien</div>
       </q-card-section>
 
       <q-card-section class="q-pt-none">
-        <div class="text-body1">{{ store.currentRecord.distance }} m</div>
-        <div class="text-body1">{{ store.currentRecord.time }} min</div>
+        <div class="text-body1">{{ store.currentRecord.traveldistance }} km</div>
+        <div class="text-body1">{{ store.currentRecord.runnedtime }}</div>
       </q-card-section>
 
       <q-card-section>
-        <div class="text-caption">{{ store.currentRecord.date }}</div>
+        <div class="text-caption">{{ store.currentRecord.runneddate }}</div>
       </q-card-section>
     </q-card>
     <div class="q-pa-md">
@@ -55,12 +55,28 @@ import { ref, onMounted, onBeforeUnmount } from 'vue';
 import { getDistance } from 'geolib';
 
 const store = useDefaultStore();
+store.getPerson();
 store.getRecords();
+
+const currentDate = new Date();
 
 const clicked = ref(false);
 
+const startCoordinates = ref({ latitude: '', longitude: '' });
+const endCoordinates = ref({ latitude: '', longitude: '' });
+const startTime = ref(null);
+const endTime = ref(null);
+const calculatedDistance = ref(0);
+const calculatedCalories = ref(0);
+const calculatedTime = ref(0);
+
 const startRunning = () => {
   clicked.value = !clicked.value;
+  startCoordinates.value = { latitude: '', longitude: '' };
+  endCoordinates.value = { latitude: '', longitude: '' };
+
+  startTime.value = new Date();
+
   navigator.geolocation.getCurrentPosition((location) => {
     console.log(
       'Start > latitude:',
@@ -68,17 +84,19 @@ const startRunning = () => {
       'longitude:',
       location.coords.longitude,
     );
+
+    startCoordinates.value = {
+      latitude: location.coords.latitude,
+      longitude: location.coords.longitude,
+    };
   });
-  store.currentRecord = {
-    calories: 120000,
-    distance: 2356,
-    time: 30,
-    date: '13.10.2023',
-  };
 };
 
 const stopRunning = () => {
   clicked.value = !clicked.value;
+
+  endTime.value = new Date();
+
   navigator.geolocation.getCurrentPosition((location) => {
     console.log(
       'Stop > latitude:',
@@ -86,7 +104,42 @@ const stopRunning = () => {
       'longitude:',
       location.coords.longitude,
     );
+
+    endCoordinates.value = {
+      latitude: location.coords.latitude,
+      longitude: location.coords.longitude,
+    };
   });
+
+  calculatedTime.value = Math.floor((endTime.value - startTime.value) / 1000);
+
+  const hours = Math.floor(calculatedTime.value / 3600);
+  const minutes = Math.floor((calculatedTime.value % 3600) / 60);
+  const seconds = calculatedTime.value % 60;
+
+  calculatedDistance.value = parseFloat(
+    (getDistance(startCoordinates.value, endCoordinates.value) / 1000).toFixed(2),
+  );
+
+  console.log(parseFloat(store.person.weight));
+  calculatedCalories.value = parseInt(
+    calculatedDistance.value * parseFloat(store.person.weight) * 0.9,
+  );
+
+  store.currentRecord = {
+    traveldistance: calculatedDistance.value,
+    runnedtime: `${hours}:${minutes}:${seconds}`,
+    calories: calculatedCalories.value,
+    pid: store.person.pid,
+    runneddate: `${currentDate.getFullYear()}-${(currentDate.getMonth() + 1)
+      .toString()
+      .padStart(2, '0')}-${currentDate.getDate().toString().padStart(2, '0')}`,
+  };
+
+  store.addRecord();
+
+  console.log('RunnedDistance: ', calculatedDistance.value);
+  console.log('Calories: ', calculatedCalories.value);
 };
 
 const columns = [
