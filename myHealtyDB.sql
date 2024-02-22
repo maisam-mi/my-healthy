@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 15.3
--- Dumped by pg_dump version 15.3
+-- Dumped from database version 15.0
+-- Dumped by pg_dump version 15.0
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -165,6 +165,11 @@ COPY public.records (rid, traveldistance, runnedtime, calories, pid, runneddate)
 6	3.40	00:35:30	3400	1	2024-02-23
 7	6.00	01:00:00	5000	2	2004-03-30
 8	6.00	01:00:00	5000	2	2004-03-31
+10	5592.64	00:00:01	367436	1	2024-02-22
+11	5592.64	00:00:04	367436	1	2024-02-22
+12	5592.86	00:00:06	367450	1	2024-02-22
+13	5592.64	00:00:07	367436	1	2024-02-22
+14	5592.64	00:00:03	367436	1	2024-02-22
 \.
 
 
@@ -186,7 +191,7 @@ SELECT pg_catalog.setval('public.records_pid_seq', 1, false);
 -- Name: records_rid_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.records_rid_seq', 8, true);
+SELECT pg_catalog.setval('public.records_rid_seq', 14, true);
 
 
 --
