@@ -20,6 +20,10 @@
         <q-item clickable v-ripple to="/about">
           <q-item-section> Impressum </q-item-section>
         </q-item>
+
+        <q-item clickable v-ripple to="/login">
+          <q-item-section> Login </q-item-section>
+        </q-item>
       </q-list>
     </q-scroll-area>
   </q-drawer>

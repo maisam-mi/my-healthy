@@ -6,7 +6,7 @@ import path from 'path';
 
 import testRoute from './api/routes/test.js';
 import personRoute from './api/routes/person.route.js';
-import recordRoute from "./api/routes/record.route.js";
+import recordRoute from './api/routes/record.route.js';
 
 dotenv.config();
 
@@ -23,7 +23,7 @@ app.use(express.json());
 
 app.use('/test', testRoute);
 app.use('/persons', personRoute);
-app.use("/records", recordRoute);
+app.use('/records', recordRoute);
 
 const PORT = process.env.PORT || 5000;
 
