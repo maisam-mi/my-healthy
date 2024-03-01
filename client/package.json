@@ -12,6 +12,7 @@
     "@quasar/extras": "^1.16.7",
     "@vitejs/plugin-vue": "^4.4.0",
     "axios": "^1.5.1",
+    "bcryptjs": "^2.4.3",
     "geolib": "^3.3.4",
     "pinia": "^2.1.7",
     "quasar": "^2.13.0",

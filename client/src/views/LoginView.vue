@@ -17,16 +17,25 @@
     </div>
     <div class="column q-gutter-md">
       <q-btn color="white" text-color="primary" label="Log in" />
-      <q-btn color="white" text-color="primary" label="Sign in" />
+      <q-btn
+        color="white"
+        text-color="primary"
+        label="Sign in"
+        @click="router.push({ name: 'Sign in' })"
+      />
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 const email = ref('john@gmail.com');
 const password = ref('john1190!');
+const isPwd = ref(true);
 </script>
 
 <style lang="scss" scoped></style>

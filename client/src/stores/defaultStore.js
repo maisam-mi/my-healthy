@@ -27,6 +27,10 @@ const useDefaultStore = defineStore('DefaultId', () => {
     await axios.patch(`http://localhost:3000/persons/${person.value.email}`, person.value);
     getPerson();
   };
+
+  const addPerson = async (data) => {
+    await axios.post('http://localhost:3000/persons', data);
+  };
   // #endregion
 
   // #region records
@@ -48,6 +52,7 @@ const useDefaultStore = defineStore('DefaultId', () => {
     aboutContent,
     person,
     getPerson,
+    addPerson,
     records,
     getRecords,
     currentRecord,
