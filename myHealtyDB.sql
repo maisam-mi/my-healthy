@@ -29,10 +29,11 @@ CREATE TABLE public.person (
     firstname character varying(50) NOT NULL,
     lastname character varying(50) NOT NULL,
     email character varying(100) NOT NULL,
-    password character varying(100) NOT NULL,
+    password text NOT NULL,
     birthdate date,
     height numeric(3,0),
-    weight numeric(6,2)
+    weight numeric(6,2),
+    salt text NOT NULL
 );
 
 
@@ -145,10 +146,10 @@ ALTER TABLE ONLY public.records ALTER COLUMN pid SET DEFAULT nextval('public.rec
 -- Data for Name: person; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.person (pid, firstname, lastname, email, password, birthdate, height, weight) FROM stdin;
-2	Jane	Smith	jane@gmail.com	Jane1985!	1985-08-22	165	63.20
-4	Bob	Williams	bob@gmail.com	Bob1988!	1988-11-30	175	80.10
-1	John	Doe	john@gmail.com	john1190!	1991-05-15	183	73.00
+COPY public.person (pid, firstname, lastname, email, password, birthdate, height, weight, salt) FROM stdin;
+2	Jane	Smith	jane@gmail.com	Jane1985!	1985-08-22	165	63.20	sdfdfggdg
+4	Bob	Williams	bob@gmail.com	Bob1988!	1988-11-30	175	80.10	fgdgdgdg
+1	John	Doe	john@gmail.com	john1190!	1991-05-15	183	73.00	fdgdfgegege
 \.
 
 
@@ -170,6 +171,7 @@ COPY public.records (rid, traveldistance, runnedtime, calories, pid, runneddate)
 12	5592.86	00:00:06	367450	1	2024-02-22
 13	5592.64	00:00:07	367436	1	2024-02-22
 14	5592.64	00:00:03	367436	1	2024-02-22
+15	5592.59	00:00:01	367433	1	2024-02-23
 \.
 
 
@@ -191,7 +193,7 @@ SELECT pg_catalog.setval('public.records_pid_seq', 1, false);
 -- Name: records_rid_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.records_rid_seq', 14, true);
+SELECT pg_catalog.setval('public.records_rid_seq', 15, true);
 
 
 --
