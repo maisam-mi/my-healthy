@@ -18,9 +18,10 @@ const useDefaultStore = defineStore('DefaultId', () => {
     time: { hours: 0, minutes: 0, seconds: 0 },
   });
 
-  const getPerson = async () => {
-    const result = await axios.get('http://localhost:3000/persons/1');
+  const getPerson = async (email) => {
+    const result = await axios.get(`http://localhost:3000/persons/${email}`);
     person.value = result.data;
+    console.log(person.value);
   };
 
   const updatePerson = async () => {
@@ -30,6 +31,8 @@ const useDefaultStore = defineStore('DefaultId', () => {
 
   const addPerson = async (data) => {
     await axios.post('http://localhost:3000/persons', data);
+    person.value = data;
+    getPerson(data.email);
   };
   // #endregion
 
@@ -38,14 +41,14 @@ const useDefaultStore = defineStore('DefaultId', () => {
 
   const currentRecord = ref(null);
 
-  const getRecords = async () => {
-    const result = await axios.get('http://localhost:3000/records/1');
+  const getRecords = async (pid) => {
+    const result = await axios.get(`http://localhost:3000/records/${pid}`);
     records.value = result.data;
   };
 
   const addRecord = async () => {
     await axios.post('http://localhost:3000/records', currentRecord.value);
-    getRecords();
+    getRecords(person.value.pid);
   };
   // #endregion
   return {

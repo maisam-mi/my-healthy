@@ -105,8 +105,13 @@
             <q-icon name="img:images/icons/clock.webp" class="image q-pb-md" />
           </div>
           <div class="text-h6">
-            {{ store.person.time.hours }} h {{ store.person.time.minutes }} min
-            {{ store.person.time.seconds }} sec
+            <span v-if="store.person.time.hours != null">{{ store.person.time.hours }} h</span
+            >&nbsp;
+            <span v-if="store.person.time.minutes != null">{{ store.person.time.minutes }} min</span
+            >&nbsp;
+            <span v-if="store.person.time.seconds != null"
+              >{{ store.person.time.seconds }} sec</span
+            >
           </div>
         </q-card-section>
       </q-card>
@@ -127,7 +132,7 @@ import useDefaultStore from '@/stores/defaultStore.js';
 import { ref } from 'vue';
 
 const store = useDefaultStore();
-store.getPerson();
+store.getPerson(store.person.email);
 
 const editMode = ref(false);
 const submit = () => {

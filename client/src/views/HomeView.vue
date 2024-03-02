@@ -55,8 +55,8 @@ import { ref, onMounted, onBeforeUnmount } from 'vue';
 import { getDistance } from 'geolib';
 
 const store = useDefaultStore();
-store.getPerson();
-store.getRecords();
+store.getPerson(store.person.email);
+store.getRecords(store.person.email);
 
 const currentDate = new Date();
 

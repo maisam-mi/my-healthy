@@ -7,15 +7,15 @@ const dbgetPersons = async () => {
 
 const dbgetPerson = async (req) => {
   const { rows } = await query(
-    'select p.*, sum(r.traveldistance) as traveleddistance, sum(r.runnedtime) as time, sum(r.calories) as calories from person p join records r on p.pid = r.pid group by p.pid having p.pid = $1',
-    [req.params.pid],
+    'select p.*, sum(r.traveldistance) as traveleddistance, sum(r.runnedtime) as time, sum(r.calories) as calories from person p join records r on p.pid = r.pid group by p.pid having p.email = $1',
+    [req.params.email],
   );
   return rows[0];
 };
 
 const dbaddPerson = async (req) => {
   const { rows } = await query(
-    'insert into person (firstname, lastname, email, password, birthdate, height, weight) values ($1, $2, $3, $4, $5, $6, $7) returning *',
+    'insert into person (firstname, lastname, email, password, birthdate, height, weight, salt) values ($1, $2, $3, $4, $5, $6, $7, $8) returning *',
     [
       req.body.firstname,
       req.body.lastname,
@@ -24,6 +24,7 @@ const dbaddPerson = async (req) => {
       req.body.birthdate,
       req.body.height,
       req.body.weight,
+      req.body.salt
     ],
   );
   return rows[0];
