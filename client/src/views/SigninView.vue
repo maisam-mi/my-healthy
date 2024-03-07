@@ -44,35 +44,27 @@
 import { ref, reactive } from 'vue';
 import { useRouter } from 'vue-router';
 import bcrypt from 'bcryptjs';
-import useDefaultStore from '@/stores/defaultStore.js';
+import myHealthyStore from '@/stores/defaultStore.js';
 
-const store = useDefaultStore();
-
-// const firstname = ref(''),
-// const lastname = ref(''),
-// const email = ref(''),
-// const password = ref(''),
-// const birthdate = ref(''),
-// const height = ref(null),
-// const weight = ref(null),
-// const salt = ref(''),
+const store = myHealthyStore();
 
 const person = reactive({
-  firstname: '',
-  lastname: '',
-  email: '',
-  password: '',
-  birthdate: '',
-  height: null,
-  weight: null,
+  firstname: 'Maisam',
+  lastname: 'Mohammadi',
+  email: 'mohammadi.m19@htlwienwest.at',
+  password: 'Maisam16',
+  birthdate: '2003-05-26',
+  height: 177,
+  weight: 71,
   salt: '',
+  traveldistance: '',
+  calories: '',
   time: { hours: 0, minutes: 0, seconds: 0 },
 });
 
 const signin = () => {
   person.salt = bcrypt.genSaltSync(10);
   person.password = bcrypt.hashSync(person.password, person.salt);
-  console.log('The result: ', person);
   store.addPerson(person);
   router.push({ name: 'Home' });
 };

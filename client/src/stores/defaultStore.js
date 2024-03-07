@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import { ref } from 'vue';
 import axios from 'axios';
 
-const useDefaultStore = defineStore(
+const myHealthyStore = defineStore(
   'DefaultId',
   () => {
     const aboutContent = ref('Implementiert von © Maisam Mohammadi, HTL Wien West 2023');
@@ -22,9 +22,7 @@ const useDefaultStore = defineStore(
 
     const getPerson = async (email) => {
       const result = await axios.get(`http://localhost:3000/persons/${email}`);
-      console.log('result  :):):):)', result);
       person.value = result.data;
-      console.log('person.value', person.value);
     };
 
     const updatePerson = async () => {
@@ -34,8 +32,7 @@ const useDefaultStore = defineStore(
 
     const addPerson = async (data) => {
       await axios.post('http://localhost:3000/persons', data);
-      console.log('After signin in store', data.email);
-      await getPerson(data.email);
+      getPerson(data.email);
     };
     // #endregion
 
@@ -46,6 +43,7 @@ const useDefaultStore = defineStore(
 
     const getRecords = async (pid) => {
       const result = await axios.get(`http://localhost:3000/records/${pid}`);
+      console.log(result.data);
       records.value = result.data;
     };
 
@@ -71,4 +69,4 @@ const useDefaultStore = defineStore(
   },
 );
 
-export default useDefaultStore;
+export default myHealthyStore;

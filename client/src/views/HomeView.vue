@@ -50,13 +50,13 @@
 </template>
 
 <script setup>
-import useDefaultStore from '@/stores/defaultStore.js';
+import myHealthyStore from '@/stores/defaultStore.js';
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import { getDistance } from 'geolib';
 
-const store = useDefaultStore();
+const store = myHealthyStore();
 store.getPerson(store.person.email);
-// store.getRecords(store.person.email);
+store.getRecords(store.person.pid);
 
 const currentDate = new Date();
 

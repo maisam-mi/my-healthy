@@ -5,9 +5,9 @@
   </div>
 </template>
 <script setup>
-import useDefaultStore from '@/stores/defaultStore.js';
+import myHealthyStore from '@/stores/defaultStore.js';
 
-const store = useDefaultStore();
+const store = myHealthyStore();
 
 console.log('Maisam Mohammadi');
 </script>

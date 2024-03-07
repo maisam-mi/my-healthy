@@ -128,11 +128,12 @@
 </template>
 
 <script setup>
-import useDefaultStore from '@/stores/defaultStore.js';
+import myHealthyStore from '@/stores/defaultStore.js';
 import { ref } from 'vue';
 
-const store = useDefaultStore();
+const store = myHealthyStore();
 store.getPerson(store.person.email);
+store.getRecords(store.person.pid);
 
 const editMode = ref(false);
 const submit = () => {
