@@ -6,6 +6,7 @@ const getPersons = asyncHandler(async (req, res) => {
 });
 
 const getPerson = asyncHandler(async (req, res) => {
+  console.log('email:', req.params.email);
   res.status(200).json(await model.dbgetPerson(req));
 });
 

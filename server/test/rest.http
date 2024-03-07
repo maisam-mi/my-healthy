@@ -4,6 +4,9 @@ GET http://localhost:3000/test
 GET http://localhost:3000/persons
 
 ###
+GET http://localhost:3000/persons/a@a.a
+
+###
 GET http://localhost:3000/persons/1
 
 ###

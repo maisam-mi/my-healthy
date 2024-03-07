@@ -66,6 +66,7 @@ const person = reactive({
   height: null,
   weight: null,
   salt: '',
+  time: { hours: 0, minutes: 0, seconds: 0 },
 });
 
 const signin = () => {

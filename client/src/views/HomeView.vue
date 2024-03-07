@@ -56,7 +56,7 @@ import { getDistance } from 'geolib';
 
 const store = useDefaultStore();
 store.getPerson(store.person.email);
-store.getRecords(store.person.email);
+// store.getRecords(store.person.email);
 
 const currentDate = new Date();
 
