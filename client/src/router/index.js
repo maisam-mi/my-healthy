@@ -38,7 +38,8 @@ router.beforeEach(async (to, from, next) => {
     if (to.name !== 'Login' && to.name !== 'Sign up') {
       // Wenn der Benutzer nicht authentifiziert ist und die Seite nicht 'Login' oder 'Singup' ist,
       // leite ihn zur 'Login'-Seite weiter
-      next({ name: 'Login' });
+      if (from.name === 'Sign up') next({ name: 'Sign up' });
+      else next({ name: 'Login' });
     } else {
       // Wenn der Benutzer nicht authentifiziert ist und die Seite 'Login' oder 'Singup' ist,
       // erlaube die Navigation

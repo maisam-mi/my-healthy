@@ -56,7 +56,11 @@
             <q-icon name="img:images/icons/birthday-cake.webp" class="image q-pb-md" />
           </div>
           <div class="text-h6">
-            <span v-if="editMode == false">{{ store.person.birthdate }}</span>
+            <span v-if="editMode == false">
+              <span v-if="!store.person.birthdate"> no data available</span>
+              <span v-else>{{ store.person.birthdate }}</span>
+            </span>
+
             <q-input
               v-if="editMode"
               bg-color="secondary"
@@ -73,7 +77,10 @@
             <q-icon name="img:images/icons/weight.webp" class="image q-pb-md" />
           </div>
           <div class="text-h6">
-            <span v-if="editMode == false">{{ store.person.weight }}</span>
+            <span v-if="editMode == false"
+              ><span v-if="!store.person.weight"> no data available</span>
+              <span v-else>{{ store.person.weight }}</span></span
+            >
             <q-input v-if="editMode" bg-color="secondary" filled v-model="store.person.weight" />
             kg
           </div>
@@ -85,7 +92,10 @@
             <q-icon name="img:images/icons/height.webp" class="image q-pb-md" />
           </div>
           <div class="text-h6">
-            <span v-if="editMode == false">{{ store.person.height }}</span>
+            <span v-if="editMode == false"
+              ><span v-if="!store.person.height"> no data available</span>
+              <span v-else>{{ store.person.height }}</span></span
+            >
             <q-input v-if="editMode" bg-color="secondary" filled v-model="store.person.height" />
             m
           </div>

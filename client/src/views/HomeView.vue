@@ -1,5 +1,5 @@
 <template>
-  <div class="justify-center robotoBold">
+  <div class="col-12 col-sm-10 col-md-8 justify-center robotoBold">
     <div class="text-center">
       <div class="q-pa-md q-gutter-sm">
         <q-btn
@@ -18,32 +18,51 @@
         />
       </div>
     </div>
-    <div v-if="store.currentRecord == null">start, run, stop</div>
-    <q-card v-if="store.currentRecord != null" bordered grid class="my-card bg-orange-5">
-      <q-card-section>
-        <div class="text-h6">{{ store.currentRecord.calories }} Kalorien</div>
-      </q-card-section>
-
-      <q-card-section class="q-pt-none">
-        <div class="text-body1">{{ store.currentRecord.traveldistance }} km</div>
-        <div class="text-body1">{{ store.currentRecord.runnedtime }}</div>
-      </q-card-section>
-
-      <q-card-section>
-        <div class="text-caption">{{ store.currentRecord.runneddate }}</div>
-      </q-card-section>
-    </q-card>
+    <div v-if="store.currentRecord == null" class="text-center">start, run, stop</div>
+    <div class="q-my-sm q-px-lg" v-if="store.currentRecord != null">
+      <q-card flat bordered class="bg-orange-5 q-gutter-sm">
+        <div>{{ store.currentRecord.calories }} calories</div>
+        <div class="row">
+          <div class="col">{{ store.currentRecord.traveldistance }} m</div>
+          <div class="col">{{ store.currentRecord.runnedtime }}</div>
+        </div>
+        <div>
+          {{ store.currentRecord.runneddate }}
+        </div>
+      </q-card>
+    </div>
     <div class="q-pa-md">
       <q-table
         grid
-        card-class="bg-orange-5 text-dark"
+        card-class="text-dark"
         style="font-family: 'RobotoMedium'"
         title="Letzte Aufnahmen"
         :columns="columns"
         :rows="store.records"
+        :pagination="{ rowsPerPage: 4 }"
         row-key="name"
         hide-header
+        hide-bottom
       >
+        <template v-slot:no-data>
+          <div class="flex-center">
+            <span> Click on Start for your first record! </span>
+          </div>
+        </template>
+        <template v-slot:item="props">
+          <div class="q-my-sm col-12">
+            <q-card flat bordered class="bg-orange-5 q-gutter-sm">
+              <div>{{ props.row.calories }} calories</div>
+              <div class="row">
+                <div class="col">{{ props.row.traveldistance }} m</div>
+                <div class="col">{{ props.row.runnedtime }}</div>
+              </div>
+              <div>
+                {{ props.row.runneddate }}
+              </div>
+            </q-card>
+          </div>
+        </template>
       </q-table>
     </div>
   </div>

@@ -22,7 +22,6 @@ const myHealthyStore = defineStore(
     });
 
     const isAuthenticated = ref(false);
-    const errorMessage = ref('');
 
     const getPerson = async (email) => {
       const result = await axios.get(`http://localhost:3000/persons/${email}`);
@@ -34,22 +33,20 @@ const myHealthyStore = defineStore(
       getPerson(person.value.email);
     };
 
-    const addPerson = async (data) => {
+    const addPerson = async (data, password) => {
+      data.salt = bcrypt.genSaltSync(10);
+      data.password = bcrypt.hashSync(password, data.salt);
       await axios.post('http://localhost:3000/persons', data);
-      isAuthenticated.value = true;
       getPerson(data.email);
     };
 
     const authenticatePerson = async (data) => {
       const user = await axios.get(`http://localhost:3000/persons/${data.email}`);
-      console.log('step 1:', user.data);
       const password = bcrypt.hashSync(data.password, user.data.salt);
-      console.log('step 2:', password);
       const result = await axios.patch('http://localhost:3000/persons/authenticate', {
         email: data.email,
         password,
       });
-      console.log('step 3:', result);
       person.value = result.data;
       isAuthenticated.value = true;
     };

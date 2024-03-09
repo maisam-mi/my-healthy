@@ -8,7 +8,8 @@ const getPersons = asyncHandler(async (req, res) => {
 
 const getPerson = asyncHandler(async (req, res) => {
   const personsRecordsCount = (await recModel.dbgetPersonRecordsWithEmail(req.params.email)).length;
-  if (personsRecordsCount > 0) res.status(200).json(await model.dbgetPersonWithRecords(req.params.email));
+  if (personsRecordsCount > 0)
+    res.status(200).json(await model.dbgetPersonWithRecords(req.params.email));
   else {
     const person = await model.dbgetPerson(req.params.email);
     person.traveleddistance = 0;
@@ -19,6 +20,10 @@ const getPerson = asyncHandler(async (req, res) => {
 });
 
 const addPerson = asyncHandler(async (req, res) => {
+  const person = req.body;
+  if (person.birthdate === '') person.birthdate = null; 
+  if (person.height === null || isNaN(person.height)) person.height = null;
+  if (person.weight === null || isNaN(person.weight)) person.weight = null;
   res.status(200).json(await model.dbaddPerson(req));
 });
 
