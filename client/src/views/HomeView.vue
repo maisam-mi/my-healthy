@@ -58,6 +58,8 @@ const store = myHealthyStore();
 store.getPerson(store.person.email);
 store.getRecords(store.person.pid);
 
+console.log(store.isAuthenticated);
+
 const currentDate = new Date();
 
 const clicked = ref(false);

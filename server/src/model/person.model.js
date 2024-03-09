@@ -5,18 +5,16 @@ const dbgetPersons = async () => {
   return rows;
 };
 
-const dbgetPerson = async (req) => {
-  const { rows } = await query(
-    'select * from person where email = $1',
-    [req.params.email],
-  );
+const dbgetPerson = async (email) => {
+  const { rows } = await query('select * from person where email = $1', [email]);
+  console.log(rows);
   return rows[0];
 };
 
-const dbgetPersonWithRecords = async (req) => {
+const dbgetPersonWithRecords = async (email) => {
   const { rows } = await query(
     'select p.*, sum(r.traveldistance) as traveleddistance, sum(r.runnedtime) as time, sum(r.calories) as calories from person p join records r on p.pid = r.pid group by p.pid having p.email = $1',
-    [req.params.email],
+    [email],
   );
   return rows[0];
 };
@@ -32,7 +30,7 @@ const dbaddPerson = async (req) => {
       req.body.birthdate,
       req.body.height,
       req.body.weight,
-      req.body.salt
+      req.body.salt,
     ],
   );
   return rows[0];

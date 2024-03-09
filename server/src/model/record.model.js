@@ -14,10 +14,10 @@ const dbgetPersonRecords = async (req) => {
 };
 
 // This is for checking, whether the person has any records
-const dbgetPersonRecordsWithEmail = async (req) => {
+const dbgetPersonRecordsWithEmail = async (email) => {
   const { rows } = await query(
     'select p.email, r.* from person p join records r on p.pid = r.pid where p.email = $1',
-    [req.params.email],
+    [email],
   );
   return rows;
 };

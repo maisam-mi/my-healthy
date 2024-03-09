@@ -28,7 +28,7 @@
       </div>
     </div>
     <div class="column q-gutter-md q-mx-lg">
-      <q-btn color="white" text-color="primary" label="Sign in" @click="signin()" />
+      <q-btn color="white" text-color="primary" label="Sign in" @click="signup()" />
 
       <q-btn
         color="white"
@@ -62,10 +62,10 @@ const person = reactive({
   time: { hours: 0, minutes: 0, seconds: 0 },
 });
 
-const signin = () => {
+const signup = async () => {
   person.salt = bcrypt.genSaltSync(10);
   person.password = bcrypt.hashSync(person.password, person.salt);
-  store.addPerson(person);
+  await store.addPerson(person);
   router.push({ name: 'Home' });
 };
 

@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import HomeView from '../views/HomeView.vue';
+import myHealthyStore from '@/stores/defaultStore.js';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -7,7 +7,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'Home',
-      component: HomeView,
+      component: () => import('../views/HomeView.vue'),
     },
     {
       path: '/account',
@@ -20,9 +20,9 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue'),
     },
     {
-      path: '/signin',
-      name: 'Sign in',
-      component: () => import('../views/SigninView.vue'),
+      path: '/signup',
+      name: 'Sign up',
+      component: () => import('../views/SignupView.vue'),
     },
     {
       path: '/login',
@@ -30,6 +30,24 @@ const router = createRouter({
       component: () => import('../views/LoginView.vue'),
     },
   ],
+});
+
+router.beforeEach(async (to, from, next) => {
+  const store = myHealthyStore();
+  if (!store.isAuthenticated) {
+    if (to.name !== 'Login' && to.name !== 'Sign up') {
+      // Wenn der Benutzer nicht authentifiziert ist und die Seite nicht 'Login' oder 'Singup' ist,
+      // leite ihn zur 'Login'-Seite weiter
+      next({ name: 'Login' });
+    } else {
+      // Wenn der Benutzer nicht authentifiziert ist und die Seite 'Login' oder 'Singup' ist,
+      // erlaube die Navigation
+      next();
+    }
+  } else {
+    // Wenn der Benutzer authentifiziert ist, erlaube die Navigation zu jeder Seite
+    next();
+  }
 });
 
 export default router;

@@ -4,10 +4,7 @@ GET http://localhost:3000/test
 GET http://localhost:3000/persons
 
 ###
-GET http://localhost:3000/persons/a@a.a
-
-###
-GET http://localhost:3000/persons/1
+GET http://localhost:3000/persons/mohammadi.m19@htlwienwest.at
 
 ###
 POST http://localhost:3000/persons
@@ -37,7 +34,7 @@ content-type: application/json
 }
 
 ###
-DELETE http://localhost:3000/persons/idrees@gmail.com
+DELETE http://localhost:3000/persons/mohammadi.m19@htlwienwest.at
 
 ###
 GET http://localhost:3000/records
@@ -55,4 +52,13 @@ content-type: application/json
     "calories": 5000,
     "pid": 2,
     "runneddate": "2004-03-31"
+}
+
+###
+PATCH http://localhost:3000/persons/authenticate
+content-type: application/json
+
+{
+    "email": "mohammadi.m19@htlwienwest.at",
+    "password": "Maisam16"
 }
