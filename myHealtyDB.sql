@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 15.0
--- Dumped by pg_dump version 15.0
+-- Dumped from database version 15.3
+-- Dumped by pg_dump version 15.3
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -150,6 +150,9 @@ COPY public.person (pid, firstname, lastname, email, password, birthdate, height
 2	Jane	Smith	jane@gmail.com	Jane1985!	1985-08-22	165	63.20	sdfdfggdg
 4	Bob	Williams	bob@gmail.com	Bob1988!	1988-11-30	175	80.10	fgdgdgdg
 1	John	Doe	john@gmail.com	john1190!	1991-05-15	183	73.00	fdgdfgegege
+72	Maisam	Mohammadi	mohammadi.m19@htlwienwest.at	$2a$10$/B6iqVdY5O6rHyAfyoHkuumbdvSR7uNR/O9/iKAGdAKyu5UGk7v7y	2003-06-26	177	81.00	$2a$10$/B6iqVdY5O6rHyAfyoHkuu
+22	Oktalon	Szoradi	Szoradi@gmail.com	$2a$10$S1soNGFFbYj3j8dSh2WfY.cT0qOy47fJGeyQiKvE9LHdIR4MTyYLO	2003-05-26	177	71.00	$2a$10$S1soNGFFbYj3j8dSh2WfY.
+53	Anar	Ching	anar@gmail.com	$2a$10$E.AgThcP8B57W0QsLWijJ.QBQFHIcMfSLEQJJtBRUASpp0svMPDgO	2003-05-26	177	71.00	$2a$10$E.AgThcP8B57W0QsLWijJ.
 \.
 
 
@@ -172,6 +175,8 @@ COPY public.records (rid, traveldistance, runnedtime, calories, pid, runneddate)
 13	5592.64	00:00:07	367436	1	2024-02-22
 14	5592.64	00:00:03	367436	1	2024-02-22
 15	5592.59	00:00:01	367433	1	2024-02-23
+31	5591.53	00:00:01	357298	72	2024-03-14
+32	5591.53	00:00:02	357298	72	2024-03-14
 \.
 
 
@@ -179,7 +184,7 @@ COPY public.records (rid, traveldistance, runnedtime, calories, pid, runneddate)
 -- Name: person_pid_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.person_pid_seq', 9, true);
+SELECT pg_catalog.setval('public.person_pid_seq', 72, true);
 
 
 --
@@ -193,7 +198,7 @@ SELECT pg_catalog.setval('public.records_pid_seq', 1, false);
 -- Name: records_rid_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.records_rid_seq', 15, true);
+SELECT pg_catalog.setval('public.records_rid_seq', 32, true);
 
 
 --
@@ -225,7 +230,7 @@ ALTER TABLE ONLY public.person
 --
 
 ALTER TABLE ONLY public.records
-    ADD CONSTRAINT records_pid_fkey FOREIGN KEY (pid) REFERENCES public.person(pid);
+    ADD CONSTRAINT records_pid_fkey FOREIGN KEY (pid) REFERENCES public.person(pid) ON DELETE CASCADE;
 
 
 --
