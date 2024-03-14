@@ -17,20 +17,23 @@
           <q-item-section> Konto </q-item-section>
         </q-item>
 
-        <q-item clickable v-ripple to="/about">
-          <q-item-section> Impressum </q-item-section>
+        <q-item clickable v-ripple to="/login" v-if="!store.isAuthenticated">
+          <q-item-section> Login </q-item-section>
         </q-item>
 
-        <q-item clickable v-ripple to="/login">
-          <q-item-section> Login </q-item-section>
+        <q-item clickable v-ripple to="/about">
+          <q-item-section> Impressum </q-item-section>
         </q-item>
       </q-list>
     </q-scroll-area>
   </q-drawer>
 </template>
 <script setup>
-import { useQuasar } from "quasar";
+import { useQuasar } from 'quasar';
+import myHealthyStore from '@/stores/defaultStore.js';
+
 const $q = useQuasar();
+const store = myHealthyStore();
 </script>
 <style lang="scss">
 .menu-list .q-item {

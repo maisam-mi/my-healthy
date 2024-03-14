@@ -21,9 +21,9 @@ const getPerson = asyncHandler(async (req, res) => {
 
 const addPerson = asyncHandler(async (req, res) => {
   const person = req.body;
-  if (person.birthdate === '') person.birthdate = null; 
-  if (person.height === null || isNaN(person.height)) person.height = null;
-  if (person.weight === null || isNaN(person.weight)) person.weight = null;
+  if (person.birthdate === '') person.birthdate = null;
+  if (person.height === null || Number.isNaN(person.height)) person.height = null;
+  if (person.weight === null || Number.isNaN(person.weight)) person.weight = null;
   res.status(200).json(await model.dbaddPerson(req));
 });
 
@@ -37,7 +37,7 @@ const deletePerson = asyncHandler(async (req, res) => {
 
 const authenticatePerson = asyncHandler(async (req, res) => {
   const person = await model.dbgetPerson(req.body.email);
-  if (!person || person == '') res.status(401).end();
+  if (!person || person === '') res.status(401).end();
   else if (req.body.password !== person.password) res.status(401).end();
   else res.status(200).json(person);
 });
