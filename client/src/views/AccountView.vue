@@ -15,6 +15,7 @@
         label="submit"
         @click="submit()"
       />
+      <q-btn color="blue" class="robotoBold" label="log out" @click="logout()" />
     </div>
     <div class="text-center">
       <q-avatar size="250px" class="q-mb-xl">
@@ -139,8 +140,10 @@
 
 <script setup>
 import myHealthyStore from '@/stores/defaultStore.js';
+import { useRouter } from 'vue-router';
 import { ref } from 'vue';
 
+const router = useRouter();
 const store = myHealthyStore();
 store.getPerson(store.person.email);
 store.getRecords(store.person.pid);
@@ -149,6 +152,11 @@ const editMode = ref(false);
 const submit = () => {
   editMode.value = !editMode.value;
   store.updatePerson();
+};
+
+const logout = () => {
+  store.resetVariables();
+  router.push({ name: 'Login' });
 };
 
 // optional: image property

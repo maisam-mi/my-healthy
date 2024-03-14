@@ -99,12 +99,8 @@ const message = ref('');
 const signup = async () => {
   try {
     await store.addPerson(person, password.value);
-    isAuthenticated.value = true;
   } catch (error) {
-    if (error.response.data.includes('Unique-Constraint »unique_email_id«'))
-      message.value = 'The email has been used!';
-
-    console.log(error.response.data);
+    message.value = error;
   }
   router.push({ name: 'Home' });
 };

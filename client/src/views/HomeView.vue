@@ -44,11 +44,6 @@
         hide-header
         hide-bottom
       >
-        <template v-slot:no-data>
-          <div class="flex-center">
-            <span> Click on Start for your first record! </span>
-          </div>
-        </template>
         <template v-slot:item="props">
           <div class="q-my-sm col-12">
             <q-card flat bordered class="bg-orange-5 q-gutter-sm">
@@ -64,6 +59,7 @@
           </div>
         </template>
       </q-table>
+      <div v-if="store.records.length <= 0" class="">make your first record</div>
     </div>
   </div>
 </template>
@@ -77,7 +73,6 @@ const store = myHealthyStore();
 store.getPerson(store.person.email);
 store.getRecords(store.person.pid);
 
-console.log(store.isAuthenticated);
 
 const currentDate = new Date();
 

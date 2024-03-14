@@ -38,6 +38,7 @@ const myHealthyStore = defineStore(
       data.password = bcrypt.hashSync(password, data.salt);
       await axios.post('http://localhost:3000/persons', data);
       getPerson(data.email);
+      isAuthenticated.value = true;
     };
 
     const authenticatePerson = async (data) => {
@@ -59,7 +60,6 @@ const myHealthyStore = defineStore(
 
     const getRecords = async (pid) => {
       const result = await axios.get(`http://localhost:3000/records/${pid}`);
-      console.log(result.data);
       records.value = result.data;
     };
 
@@ -68,6 +68,24 @@ const myHealthyStore = defineStore(
       getRecords(person.value.pid);
     };
     // #endregion
+    
+    const resetVariables = async () => {
+      person.value = {
+        firstname: '',
+        lastname: '',
+        email: '',
+        birthdate: '',
+        height: '',
+        weight: '',
+        traveldistance: '',
+        calories: '',
+        time: { hours: 0, minutes: 0, seconds: 0 },
+      };
+      records.value = [];
+      currentRecord.value = null;
+      isAuthenticated.value = false;
+    };
+
     return {
       aboutContent,
       person,
@@ -80,6 +98,7 @@ const myHealthyStore = defineStore(
       currentRecord,
       addRecord,
       updatePerson,
+      resetVariables,
     };
   },
   {

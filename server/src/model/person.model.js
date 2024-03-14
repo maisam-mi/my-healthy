@@ -7,7 +7,6 @@ const dbgetPersons = async () => {
 
 const dbgetPerson = async (email) => {
   const { rows } = await query('select * from person where email = $1', [email]);
-  console.log(rows);
   return rows[0];
 };
 
