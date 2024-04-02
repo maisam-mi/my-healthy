@@ -147,12 +147,7 @@ ALTER TABLE ONLY public.records ALTER COLUMN pid SET DEFAULT nextval('public.rec
 --
 
 COPY public.person (pid, firstname, lastname, email, password, birthdate, height, weight, salt) FROM stdin;
-2	Jane	Smith	jane@gmail.com	Jane1985!	1985-08-22	165	63.20	sdfdfggdg
-4	Bob	Williams	bob@gmail.com	Bob1988!	1988-11-30	175	80.10	fgdgdgdg
-1	John	Doe	john@gmail.com	john1190!	1991-05-15	183	73.00	fdgdfgegege
-72	Maisam	Mohammadi	mohammadi.m19@htlwienwest.at	$2a$10$/B6iqVdY5O6rHyAfyoHkuumbdvSR7uNR/O9/iKAGdAKyu5UGk7v7y	2003-06-26	177	81.00	$2a$10$/B6iqVdY5O6rHyAfyoHkuu
-22	Oktalon	Szoradi	Szoradi@gmail.com	$2a$10$S1soNGFFbYj3j8dSh2WfY.cT0qOy47fJGeyQiKvE9LHdIR4MTyYLO	2003-05-26	177	71.00	$2a$10$S1soNGFFbYj3j8dSh2WfY.
-53	Anar	Ching	anar@gmail.com	$2a$10$E.AgThcP8B57W0QsLWijJ.QBQFHIcMfSLEQJJtBRUASpp0svMPDgO	2003-05-26	177	71.00	$2a$10$E.AgThcP8B57W0QsLWijJ.
+89	Maisam	Mohammadi	mohammadi.m19@htlwienwest.at	$2a$10$X7HD9bfVjSY.ZoLNTMMLtub6Z/J9XiYUY8g5Pu.A87WTXJBov7I3u	2000-03-20	177	71.00	$2a$10$X7HD9bfVjSY.ZoLNTMMLtu
 \.
 
 
@@ -161,22 +156,9 @@ COPY public.person (pid, firstname, lastname, email, password, birthdate, height
 --
 
 COPY public.records (rid, traveldistance, runnedtime, calories, pid, runneddate) FROM stdin;
-1	2.00	00:40:00	3000	1	2024-02-17
-2	1.00	00:25:00	1400	1	2024-02-18
-3	3.00	00:30:00	1800	1	2024-02-19
-4	4.00	00:45:00	2000	1	2024-02-20
-5	3.00	00:25:00	1800	1	2024-02-21
-6	3.40	00:35:30	3400	1	2024-02-23
-7	6.00	01:00:00	5000	2	2004-03-30
-8	6.00	01:00:00	5000	2	2004-03-31
-10	5592.64	00:00:01	367436	1	2024-02-22
-11	5592.64	00:00:04	367436	1	2024-02-22
-12	5592.86	00:00:06	367450	1	2024-02-22
-13	5592.64	00:00:07	367436	1	2024-02-22
-14	5592.64	00:00:03	367436	1	2024-02-22
-15	5592.59	00:00:01	367433	1	2024-02-23
-31	5591.53	00:00:01	357298	72	2024-03-14
-32	5591.53	00:00:02	357298	72	2024-03-14
+35	5591.55	00:00:02	357300	89	2024-04-02
+36	5591.55	00:00:02	357300	89	2024-04-02
+37	5591.55	00:00:03	357300	89	2024-04-02
 \.
 
 
@@ -184,7 +166,7 @@ COPY public.records (rid, traveldistance, runnedtime, calories, pid, runneddate)
 -- Name: person_pid_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.person_pid_seq', 72, true);
+SELECT pg_catalog.setval('public.person_pid_seq', 90, true);
 
 
 --
@@ -198,7 +180,7 @@ SELECT pg_catalog.setval('public.records_pid_seq', 1, false);
 -- Name: records_rid_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.records_rid_seq', 32, true);
+SELECT pg_catalog.setval('public.records_rid_seq', 37, true);
 
 
 --
