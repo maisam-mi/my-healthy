@@ -99,10 +99,10 @@ const message = ref('');
 const signup = async () => {
   try {
     await store.addPerson(person, password.value);
+    router.push({ name: 'Home' });
   } catch (error) {
     message.value = error;
   }
-  router.push({ name: 'Home' });
 };
 
 const router = useRouter();

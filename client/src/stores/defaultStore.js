@@ -37,7 +37,7 @@ const myHealthyStore = defineStore(
       data.salt = bcrypt.genSaltSync(10);
       data.password = bcrypt.hashSync(password, data.salt);
       await axios.post('http://localhost:3000/persons', data);
-      getPerson(data.email);
+      await getPerson(data.email);
       isAuthenticated.value = true;
     };
 
@@ -50,6 +50,10 @@ const myHealthyStore = defineStore(
       });
       person.value = result.data;
       isAuthenticated.value = true;
+    };
+
+    const deletePerson = async () => {
+      await axios.delete(`http://localhost:3000/persons/${person.value.email}`);
     };
     // #endregion
 
@@ -68,7 +72,7 @@ const myHealthyStore = defineStore(
       getRecords(person.value.pid);
     };
     // #endregion
-    
+
     const resetVariables = async () => {
       person.value = {
         firstname: '',
@@ -93,6 +97,7 @@ const myHealthyStore = defineStore(
       getPerson,
       addPerson,
       authenticatePerson,
+      deletePerson,
       records,
       getRecords,
       currentRecord,

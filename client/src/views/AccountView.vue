@@ -16,6 +16,7 @@
         @click="submit()"
       />
       <q-btn color="blue" class="robotoBold" label="log out" @click="logout()" />
+      <q-btn color="blue" class="robotoBold" label="delete Account" @click="deleteAccount()" />
     </div>
     <div class="text-center">
       <q-avatar size="250px" class="q-mb-xl">
@@ -155,6 +156,12 @@ const submit = () => {
 };
 
 const logout = () => {
+  store.resetVariables();
+  router.push({ name: 'Login' });
+};
+
+const deleteAccount = () => {
+  store.deletePerson();
   store.resetVariables();
   router.push({ name: 'Login' });
 };

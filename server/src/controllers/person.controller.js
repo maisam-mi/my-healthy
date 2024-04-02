@@ -8,14 +8,18 @@ const getPersons = asyncHandler(async (req, res) => {
 
 const getPerson = asyncHandler(async (req, res) => {
   const personsRecordsCount = (await recModel.dbgetPersonRecordsWithEmail(req.params.email)).length;
-  if (personsRecordsCount > 0)
+  if (personsRecordsCount > 0) {
     res.status(200).json(await model.dbgetPersonWithRecords(req.params.email));
-  else {
+  } else {
     const person = await model.dbgetPerson(req.params.email);
-    person.traveleddistance = 0;
-    person.calories = 0;
-    person.time = { hours: 0, minutes: 0, seconds: 0 };
-    res.status(200).json(person);
+    if (person != undefined) {
+      person.traveleddistance = 0;
+      person.calories = 0;
+      person.time = { hours: 0, minutes: 0, seconds: 0 };
+      res.status(200).json(person);
+    } else {
+      res.status(304).send('There is no person available!');
+    }
   }
 });
 
