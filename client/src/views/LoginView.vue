@@ -1,11 +1,12 @@
 <template>
-  <div class="column q-gutter-md">
-    <div class="text-h3">
+  <div class="column" style="height: 91vh">
+    <div class="col-4 text-h3">
       <h4>Login</h4>
     </div>
-    <q-form class="q-gutter-md" @submit="login()">
-      <div class="column q-gutter-md">
+    <q-form class="col-8 column" @submit="login()">
+      <div class="col-6 column">
         <q-input
+          class="q-px-lg"
           v-model="data.email"
           filled
           type="email"
@@ -13,6 +14,7 @@
           :rules="[(val) => !!val || 'Email is required']"
         />
         <q-input
+          class="q-px-lg"
           v-model="data.password"
           filled
           :type="isPwd ? 'password' : 'text'"
@@ -28,10 +30,11 @@
           </template>
         </q-input>
       </div>
-      <div class="column q-gutter-md">
-        <q-btn color="white" text-color="primary" type="submit" label="Log in" />
+      <div class="col-6 column">
+        <q-btn no-caps color="white" class="q-py-md q-mx-sm" text-color="primary" type="submit" label="Log in" />
         <q-btn
           color="white"
+          class="q-py-md q-mx-sm q-mt-md"
           text-color="primary"
           label="Sign up"
           @click="router.push({ name: 'Sign up' })"

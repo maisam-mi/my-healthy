@@ -5,10 +5,14 @@
     <LeftDrawerComp v-model="leftDrawerOpen"></LeftDrawerComp>
 
     <q-page-container>
-      <q-page class="q-pa-md row justify-center">
+      <q-page id="desktop" class="gt-xs q-pa-md row justify-center">
+        <RouterView />
+      </q-page>
+      <q-page id="mobile" class="lt-sm q-pa-md">
         <RouterView />
       </q-page>
     </q-page-container>
+    
   </q-layout>
 </template>
 <script setup>
