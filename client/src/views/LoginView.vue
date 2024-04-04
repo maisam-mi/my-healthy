@@ -1,6 +1,6 @@
 <template>
   <div class="column" style="height: 91vh">
-    <div class="col-4 text-h3">
+    <div class="col-4 text-h3 robotoBold">
       <h4>Login</h4>
     </div>
     <q-form class="col-8 column" @submit="login()">
@@ -34,7 +34,7 @@
         <q-btn
           no-caps
           color="white"
-          class="q-py-md q-mx-sm"
+          class="q-py-md q-mx-sm robotoBold my-rounded"
           text-color="primary"
           type="submit"
           label="Log in"
@@ -47,7 +47,7 @@
           text-color="primary"
           @click="router.push({ name: 'Sign up' })"
         >
-          No Account yet? Sign up
+          <span>No Account yet? <span class="robotoBold">Sign up</span></span>
         </q-btn>
       </div>
     </q-form>
@@ -76,4 +76,9 @@ const login = async () => {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.my-rounded {
+  border-radius: 8px;
+}
+
+</style>

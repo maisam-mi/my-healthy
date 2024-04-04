@@ -1,40 +1,24 @@
 <template>
   <div class="column justify-center items-center robotoBold">
-    <div class="q-mb-md q-gutter-sm">
-      <q-btn
-        no-caps
-        v-if="editMode == false"
-        color="blue"
-        class="robotoBold"
-        label="Edit"
-        @click="editMode = !editMode"
-      />
-      <q-btn
-        no-caps
-        v-if="editMode == true"
-        color="blue"
-        class="robotoBold"
-        label="Submit"
-        @click="submit()"
-      />
-      <q-btn no-caps flat color="standard" class="robotoBold" label="Log out" @click="logout()" />
-      <q-btn
-        flat
-        no-caps
-        color="negative"
-        class="robotoBold"
-        label="Delete Account"
-        @click="deleteAccount()"
-      />
-    </div>
     <div class="text-center">
-      <q-avatar size="250px" class="q-mb-xl">
+      <q-avatar size="250px">
         <q-img src="/images/user.png" class="round" />
       </q-avatar>
+      <div class="q-mt-xs">
+        <q-btn
+          flat
+          round
+          v-if="editMode == false"
+          color="blue"
+          icon="edit"
+          @click="editMode = !editMode"
+        />
+        <q-btn round v-if="editMode == true" color="blue" icon="done" @click="submit()" />
+      </div>
       <p v-if="editMode == false" class="text-h4">
         {{ store.person.firstname }} {{ store.person.lastname }}
       </p>
-      <div class="row q-gutter-sm">
+      <div class="row q-gutter-sm q-mt-xs">
         <q-input
           v-if="editMode"
           bg-color="secondary"
@@ -50,15 +34,7 @@
           v-model="store.person.lastname"
         />
       </div>
-      <p v-if="editMode == false" class="text-h5 robotoMedium">{{ store.person.email }}</p>
-      <q-input
-        v-if="editMode"
-        bg-color="secondary"
-        filled
-        label="email"
-        v-model="store.person.email"
-        class="q-ma-sm"
-      />
+      <p class="text-h5 robotoMedium">{{ store.person.email }}</p>
     </div>
     <div class="row q-gutter-md justify-center">
       <q-card class="my-card card text-center col-5">
@@ -126,10 +102,10 @@
             <q-icon name="img:images/icons/clock.webp" class="image q-pb-md" />
           </div>
           <div class="text-h6">
-            <span v-if="store.person.time.hours != null">{{ store.person.time.hours }} h</span
-            >&nbsp;
-            <span v-if="store.person.time.minutes != null">{{ store.person.time.minutes }} min</span
-            >&nbsp;
+            <span v-if="store.person.time.hours != null">{{ store.person.time.hours }} h&nbsp;</span
+            >
+            <span v-if="store.person.time.minutes != null">{{ store.person.time.minutes }} min&nbsp;</span
+            >
             <span v-if="store.person.time.seconds != null"
               >{{ store.person.time.seconds }} sec</span
             >
@@ -144,6 +120,16 @@
           <div class="text-h6">{{ store.person.calories }} kcal</div>
         </q-card-section>
       </q-card>
+    </div>
+    <div class="q-mt-md">
+      <q-btn
+        flat
+        no-caps
+        color="negative"
+        class="robotoBold"
+        label="Delete Account"
+        @click="deleteAccount()"
+      />
     </div>
   </div>
 </template>
@@ -162,11 +148,6 @@ const editMode = ref(false);
 const submit = () => {
   editMode.value = !editMode.value;
   store.updatePerson();
-};
-
-const logout = () => {
-  store.resetVariables();
-  router.push({ name: 'Login' });
 };
 
 const deleteAccount = () => {

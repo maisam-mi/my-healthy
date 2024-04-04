@@ -103,7 +103,7 @@ const startRunning = () => {
     };
   });
 
-  textToSpeak.value = 'You can start to run';
+  textToSpeak.value = 'You can start jogging';
 
   speech.speak();
 };
@@ -144,7 +144,7 @@ const stopRunning = () => {
       .padStart(2, '0')}-${currentDate.getDate().toString().padStart(2, '0')}`,
   };
 
-  textToSpeak.value = `You burned ${store.currentRecord.calories} calories by jogging ${store.currentRecord.traveldistance} meter.`;
+  textToSpeak.value = `You burned ${store.currentRecord.calories} calories by jogging ${store.currentRecord.traveldistance} meters.`;
   speech.speak();
 
   store.addRecord();

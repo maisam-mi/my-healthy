@@ -17,12 +17,16 @@
           <q-item-section> Konto </q-item-section>
         </q-item>
 
+        <q-item clickable v-ripple to="/about">
+          <q-item-section> Impressum </q-item-section>
+        </q-item>
+
         <q-item clickable v-ripple to="/login" v-if="!store.isAuthenticated">
           <q-item-section> Login </q-item-section>
         </q-item>
 
-        <q-item clickable v-ripple to="/about">
-          <q-item-section> Impressum </q-item-section>
+        <q-item clickable v-ripple @click="logout" v-if="store.isAuthenticated">
+          <q-item-section> Log out </q-item-section>
         </q-item>
       </q-list>
     </q-scroll-area>
@@ -30,10 +34,18 @@
 </template>
 <script setup>
 import { useQuasar } from 'quasar';
+import { useRouter } from 'vue-router';
 import myHealthyStore from '@/stores/defaultStore.js';
+
+const router = useRouter();
 
 const $q = useQuasar();
 const store = myHealthyStore();
+
+const logout = () => {
+  store.resetVariables();
+  router.push({ name: 'Login' });
+};
 </script>
 <style lang="scss">
 .menu-list .q-item {

@@ -24,3 +24,11 @@ import { RouterView } from 'vue-router';
 const leftDrawerOpen = ref(false);
 const toggleLeftDrawer = () => (leftDrawerOpen.value = !leftDrawerOpen.value);
 </script>
+<style>
+.robotoBold {
+  font-family: 'RobotoBold';
+}
+.q-btn {
+  font-size: 1.2rem;
+}
+</style>
