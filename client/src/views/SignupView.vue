@@ -1,6 +1,6 @@
 <template>
-  <div class="column q-gutter-md">
-    <div class="text-h3">
+  <div class="column">
+    <div class="text-h3 robotoBold">
       <h4>Sign in</h4>
     </div>
     <q-form class="q-gutter-md" @submit="signup()">
@@ -54,18 +54,26 @@
           />
         </div>
       </div>
-      <div class="column q-gutter-md q-mx-lg">
+      <div class="column">
         <p v-if="message != ''">{{ message }}</p>
-        <q-btn no-caps color="white" text-color="primary" label="Sign up" type="submit" />
+        <q-btn
+          no-caps
+          class="q-py-md q-mx-sm my-rounded robotoBold"
+          color="white"
+          text-color="primary"
+          label="Sign up"
+          type="submit"
+        />
 
         <q-btn
           no-caps
           flat
+          class="q-py-md q-mx-sm q-mt-md"
           color="standard"
           text-color="primary"
           @click="router.push({ name: 'Login' })"
         >
-          Already have an account? Log in
+          <span>Already have an account? <span class="robotoBold">Log in</span></span>
         </q-btn>
       </div>
     </q-form>
@@ -112,4 +120,8 @@ const router = useRouter();
 const isPwd = ref(true);
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.my-rounded {
+  border-radius: 8px;
+}
+</style>

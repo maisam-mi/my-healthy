@@ -80,5 +80,4 @@ const login = async () => {
 .my-rounded {
   border-radius: 8px;
 }
-
 </style>

@@ -4,15 +4,16 @@
       <div class="q-pa-md q-gutter-sm">
         <q-btn
           v-if="clicked"
-          color="blue"
-          class="robotoBold text-h6 q-pa-lg"
+          round
+          class="robotoBold text-h6 q-pa-lg my-button"
+          style="background: linear-gradient(to bottom right, #ff0014, #ff889f)"
           label="Stop"
           @click="stopRunning()"
         />
         <q-btn
           v-else
-          color="blue"
-          class="robotoBold text-h6 q-pa-lg"
+          class="robotoBold text-h6 q-pa-lg my-button"
+          style="background: linear-gradient(to bottom right, #003cf6, #8174ff)"
           label="Start"
           @click="startRunning()"
         />
@@ -20,8 +21,8 @@
     </div>
     <div v-if="store.currentRecord == null" class="text-center">start, run, stop</div>
     <div class="q-my-sm q-px-lg" v-if="store.currentRecord != null">
-      <q-card flat bordered class="bg-orange-5 q-gutter-sm">
-        <div>{{ store.currentRecord.calories }} calories</div>
+      <q-card flat bordered class="bg-orange-5 q-gutter-sm q-pa-sm may-card">
+        <div class="text-h6">{{ store.currentRecord.calories }} calories</div>
         <div class="row">
           <div class="col">{{ store.currentRecord.traveldistance }} m</div>
           <div class="col">{{ store.currentRecord.runnedtime }}</div>
@@ -32,11 +33,11 @@
       </q-card>
     </div>
     <div class="q-pa-md">
+      <div class="text-h4">Previous records</div>
       <q-table
         grid
         card-class="text-dark"
         style="font-family: 'RobotoMedium'"
-        title="Letzte Aufnahmen"
         :columns="columns"
         :rows="store.records"
         :pagination="{ rowsPerPage: 4 }"
@@ -45,9 +46,9 @@
         hide-bottom
       >
         <template v-slot:item="props">
-          <div class="q-my-sm col-12">
-            <q-card flat bordered class="bg-orange-5 q-gutter-sm">
-              <div>{{ props.row.calories }} calories</div>
+          <div class="q-my-md col-12">
+            <q-card flat bordered class="bg-orange-5 q-gutter-sm q-mx-md q-pa-sm may-card">
+              <div class="text-h6">{{ props.row.calories }} calories</div>
               <div class="row">
                 <div class="col">{{ props.row.traveldistance }} m</div>
                 <div class="col">{{ props.row.runnedtime }}</div>
@@ -185,5 +186,12 @@ const columns = [
 <style lang="scss" scoped>
 .robotoBold {
   font-family: 'RobotoBold';
+}
+.my-button {
+  border-radius: 1rem;
+  color: #eeeeee;
+}
+.may-card {
+  border-radius: 0.75rem;
 }
 </style>
