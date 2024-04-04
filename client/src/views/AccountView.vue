@@ -1,22 +1,31 @@
 <template>
   <div class="column justify-center items-center robotoBold">
-    <div class="q-mb-md">
+    <div class="q-mb-md q-gutter-sm">
       <q-btn
+        no-caps
         v-if="editMode == false"
         color="blue"
         class="robotoBold"
-        label="edit"
+        label="Edit"
         @click="editMode = !editMode"
       />
       <q-btn
+        no-caps
         v-if="editMode == true"
         color="blue"
         class="robotoBold"
-        label="submit"
+        label="Submit"
         @click="submit()"
       />
-      <q-btn color="blue" class="robotoBold" label="log out" @click="logout()" />
-      <q-btn color="blue" class="robotoBold" label="delete Account" @click="deleteAccount()" />
+      <q-btn no-caps flat color="standard" class="robotoBold" label="Log out" @click="logout()" />
+      <q-btn
+        flat
+        no-caps
+        color="negative"
+        class="robotoBold"
+        label="Delete Account"
+        @click="deleteAccount()"
+      />
     </div>
     <div class="text-center">
       <q-avatar size="250px" class="q-mb-xl">

@@ -31,14 +31,24 @@
         </q-input>
       </div>
       <div class="col-6 column">
-        <q-btn no-caps color="white" class="q-py-md q-mx-sm" text-color="primary" type="submit" label="Log in" />
         <q-btn
+          no-caps
+          color="white"
+          class="q-py-md q-mx-sm"
+          text-color="primary"
+          type="submit"
+          label="Log in"
+        />
+        <q-btn
+          no-caps
+          flat
           color="white"
           class="q-py-md q-mx-sm q-mt-md"
           text-color="primary"
-          label="Sign up"
           @click="router.push({ name: 'Sign up' })"
-        />
+        >
+          No Account yet? Sign up
+        </q-btn>
       </div>
     </q-form>
   </div>

@@ -19,9 +19,9 @@ export default defineConfig({
     }),
     VitePWA({
       manifest,
-      includeAssets: ['**/*.{js,css,html,jpg,ico,png,ttf,woff2,webp}'],
+      includeAssets: ['**/*.{js,css,html,jpg,ico,png,ttf,woff2,webp,svg}'],
       workbox: {
-        globPatterns: ['**/*.{js,css,html,jpg,ico,png,ttf,woff2,webp}'],
+        globPatterns: ['**/*.{js,css,html,jpg,ico,png,ttf,woff2,webp,svg}'],
         mode: 'development',
         runtimeCaching: [
           {

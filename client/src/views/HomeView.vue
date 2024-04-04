@@ -68,11 +68,14 @@
 import myHealthyStore from '@/stores/defaultStore.js';
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import { getDistance } from 'geolib';
+import { useSpeechSynthesis } from '@vueuse/core';
 
 const store = myHealthyStore();
 store.getPerson(store.person.email);
 store.getRecords(store.person.pid);
 
+const textToSpeak = ref('');
+const speech = useSpeechSynthesis(textToSpeak);
 
 const currentDate = new Date();
 
@@ -99,6 +102,10 @@ const startRunning = () => {
       longitude: location.coords.longitude,
     };
   });
+
+  textToSpeak.value = 'You can start to run';
+
+  speech.speak();
 };
 
 const stopRunning = () => {
@@ -136,6 +143,9 @@ const stopRunning = () => {
       .toString()
       .padStart(2, '0')}-${currentDate.getDate().toString().padStart(2, '0')}`,
   };
+
+  textToSpeak.value = `You burned ${store.currentRecord.calories} calories by jogging ${store.currentRecord.traveldistance} meter.`;
+  speech.speak();
 
   store.addRecord();
 };

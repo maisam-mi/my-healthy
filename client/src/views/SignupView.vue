@@ -56,14 +56,17 @@
       </div>
       <div class="column q-gutter-md q-mx-lg">
         <p v-if="message != ''">{{ message }}</p>
-        <q-btn color="white" text-color="primary" label="Sign up" type="submit" />
+        <q-btn no-caps color="white" text-color="primary" label="Sign up" type="submit" />
 
         <q-btn
-          color="white"
+          no-caps
+          flat
+          color="standard"
           text-color="primary"
-          label="Log in"
           @click="router.push({ name: 'Login' })"
-        />
+        >
+          Already have an account? Log in
+        </q-btn>
       </div>
     </q-form>
   </div>
