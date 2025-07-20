@@ -1,2 +1,3 @@
-# my-healthy
-The is a plattform, which can calculate the burned calories. 
+![my healthy logo](resources/banner.png)
+
+`my healthy` is a plattform, which can calculate the burned calories. 
