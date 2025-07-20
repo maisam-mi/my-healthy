@@ -8,6 +8,4 @@
 import myHealthyStore from '@/stores/defaultStore.js';
 
 const store = myHealthyStore();
-
-console.log('Maisam Mohammadi');
 </script>

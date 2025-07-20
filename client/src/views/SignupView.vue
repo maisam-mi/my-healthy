@@ -83,7 +83,6 @@
 <script setup>
 import { ref, reactive } from 'vue';
 import { useRouter } from 'vue-router';
-import bcrypt from 'bcryptjs';
 import myHealthyStore from '@/stores/defaultStore.js';
 
 const store = myHealthyStore();
@@ -91,6 +90,7 @@ const store = myHealthyStore();
 // The password input should be out of the object, cause while not being successful, it is hashed.
 const password = ref('Maisam16');
 
+// test data
 const person = reactive({
   firstname: 'Maisam',
   lastname: 'Mohammadi',
